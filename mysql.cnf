@@ -1,0 +1,8 @@
+# mysql.cnf
+
+[client]
+
+database = meeting
+host = localhost
+user = woosung
+password = tjdntjd0609
