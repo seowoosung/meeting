@@ -16,6 +16,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# For django-debug-toolbar
+INTERNAL_IPS = ['*']
+
+def custom_show_toolbar(request):
+    return True
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': custom_show_toolbar,
+    'INTERCEPT_REDIRECTS': False,
+}
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -25,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     
     # Vendor apps
     'bootstrap4',
@@ -43,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'meeting.urls'
@@ -102,8 +114,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-ENABLE_USER_ACTIVATION = False
+# Variables
+ENABLE_USER_ACTIVATION = True
 DISABLE_USERNAME = False
 LOGIN_VIA_EMAIL = True
 LOGIN_VIA_EMAIL_OR_USERNAME = False
@@ -118,7 +130,15 @@ SIGN_UP_FIELDS = ['username', 'first_name', 'last_name', 'email', 'password1', '
 if DISABLE_USERNAME:
     SIGN_UP_FIELDS = ['first_name', 'last_name', 'email', 'password1', 'password2']
 
-
+# Email setting for email authentication
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ddungcum@gmail.com'
+EMAIL_HOST_PASSWORD = 'w613w613'
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
