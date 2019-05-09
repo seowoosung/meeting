@@ -4,16 +4,14 @@
 {% load i18n %}
 
 {% block content %}
-
-    <h4>{% trans 'Create an account' %}</h4>
+    <h4 class="container-label">{% trans 'Create an account' %}</h4>
 
     <form method="post">
 
         {% csrf_token %}
-        {% bootstrap_form form %}
+        {% bootstrap_form form layout='inline' %}
 
-        <button class="btn btn-success">{% trans 'Create' %}</button>
+        <button class="btn button button1">{% trans 'Create an account' %}</button>
 
     </form>
-
 {% endblock %}

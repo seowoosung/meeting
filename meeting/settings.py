@@ -116,19 +116,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Variables
 ENABLE_USER_ACTIVATION = True
-DISABLE_USERNAME = False
-LOGIN_VIA_EMAIL = True
-LOGIN_VIA_EMAIL_OR_USERNAME = False
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'app:profile'
 LOGIN_URL = 'accounts:log_in'
 USE_REMEMBER_ME = True
 
-RESTORE_PASSWORD_VIA_EMAIL_OR_USERNAME = False
 ENABLE_ACTIVATION_AFTER_EMAIL_CHANGE = True
-
-SIGN_UP_FIELDS = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
-if DISABLE_USERNAME:
-    SIGN_UP_FIELDS = ['first_name', 'last_name', 'email', 'password1', 'password2']
 
 # Email setting for email authentication
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -168,3 +160,5 @@ LOCALE_PATHS = [
 STATICFILES_DIRS = [
     os.path.join(CONTENT_DIR, 'assets'),
 ]
+
+AUTH_USER_MODEL = 'accounts.User'

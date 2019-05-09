@@ -4,15 +4,14 @@
 {% load i18n %}
 
 {% block content %}
-
     <h4>{% trans 'Log in' %}</h4>
 
     <form method="post">
 
         {% csrf_token %}
-        {% bootstrap_form form %}
+        {% bootstrap_form form layout='inline' %}
 
-        <button class="btn btn-primary">{% trans 'Log in' %}</button>
+        <button class="btn button button1">{% trans 'Log in' %}</button>
 
     </form>
 

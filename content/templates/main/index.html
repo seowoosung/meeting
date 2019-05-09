@@ -1,16 +1,41 @@
-{% extends 'layouts/default/page.html' %}
+{% extends 'layouts/default/pageintro.html' %}
 
 {% load i18n %}
+{% load staticfiles %}
 
 {% block content %}
 
-    {% if request.user.is_authenticated %}
-        {% trans 'Your username is' %} <b>{{ request.user.username }}</b>.
+{% if request.user.is_authenticated %}
+{% trans 'Your username is' %} <b>{{ request.user.username }}</b>.
+{% else %}
 
-    {% else %}
-
-        {% trans 'You are a guest.' %}
-
-    {% endif %}
+<div class="container">
+    <!--Grid row-->
+    <div class="row">
+        <!--Grid column-->
+        <div class="col-md-7 text-white text-center pt-5" data-wow-delay="0.3s">
+            <h1 class="intro-page font-weight-bold pt-sm-5">
+                <span>{% trans 'Meeting. Matching' %}</span>
+            </h1>
+            <hr class="hr-light border-white">
+            <h6 class="mb-4">
+                {% trans 'When you want to make new friends,<br /> When you want to play with new people, <br />Join now' %}
+            </h6>
+            <a href="{% url 'accounts:sign_up' %}">
+                <button type="button" class="btn button button1">
+                    <strong>{% trans 'Create an account' %}</strong>
+                </button>
+            </a>
+        </div>
+        <!--Grid column end-->
+        <!--Grid column-->
+        <div class="col-md-4" data-wow-delay="0.3s">
+            <img src="{% static "image/kakaotalk.jpg" %}" alt="kakao" class='img-fluid  pt-5 intro-img'>
+        </div>
+        <!--Grid column end-->
+    </div>
+    <!--Grid row end-->
+</div>
+{% endif %}
 
 {% endblock %}

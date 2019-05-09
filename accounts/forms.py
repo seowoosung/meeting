@@ -3,8 +3,7 @@ from datetime import timedelta
 from django import forms
 from django.forms import ValidationError
 from django.conf import settings
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from accounts.models import User, UserManager
 from django.utils import timezone
 from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
@@ -15,7 +14,17 @@ class UserCacheMixin:
 
 
 class SignIn(UserCacheMixin, forms.Form):
-    password = forms.CharField(label=_('Password'), strip=False, widget=forms.PasswordInput)
+    password = forms.CharField(
+        label="", 
+        strip=False, 
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': _('Password(More than 6 characters)'),
+                'required': 'True',
+            }
+        )
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -35,32 +44,19 @@ class SignIn(UserCacheMixin, forms.Form):
         return password
 
 
-class SignInViaUsernameForm(SignIn):
-    username = forms.CharField(label=_('Username'))
-
-    @property
-    def field_order(self):
-        if settings.USE_REMEMBER_ME:
-            return ['username', 'password', 'remember_me']
-        return ['username', 'password']
-
-    def clean_username(self):
-        username = self.cleaned_data['username']
-
-        user = User.objects.filter(username=username).first()
-        if not user:
-            raise ValidationError(_('You entered an invalid username.'))
-
-        if not user.is_active:
-            raise ValidationError(_('This account is not active.'))
-
-        self.user_cache = user
-
-        return username
-
 
 class SignInViaEmailForm(SignIn):
-    email = forms.EmailField(label=_('Email'))
+    email = forms.EmailField(
+        label="",
+        required=True,
+        widget=forms.EmailInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': _('Email address(example@gmail.com)'),
+                'required': 'True',
+            }
+        ),
+    )
 
     @property
     def field_order(self):
@@ -83,36 +79,77 @@ class SignInViaEmailForm(SignIn):
         return email
 
 
-class SignInViaEmailOrUsernameForm(SignIn):
-    email_or_username = forms.CharField(label=_('Email or Username'))
 
-    @property
-    def field_order(self):
-        if settings.USE_REMEMBER_ME:
-            return ['email_or_username', 'password', 'remember_me']
-        return ['email_or_username', 'password']
+class UserCreationForm(forms.ModelForm):
+    # 사용자 생성 폼
+    email = forms.EmailField(
+        label="",
+        required=True,
+        widget=forms.EmailInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': _('Email address(example@gmail.com)'),
+                'required': 'True',
+            }
+        )
+    )
+    username = forms.CharField(
+        label="",
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': _('Username(FirstName LastName)'),
+                'required': 'True',
+            }
+        )
+    )
+    password1 = forms.CharField(
+        label="",
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': _('Password(More than 6 characters)'),
+                'required': 'True',
+            }
+        )
+    )
+    password2 = forms.CharField(
+        label="",
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': _('Password confirmation'),
+                'required': 'True',
+            }
+        )
+    )
 
-    def clean_email_or_username(self):
-        email_or_username = self.cleaned_data['email_or_username']
+    class Meta:
+        model = User
+        fields = ('email', 'username')
 
-        user = User.objects.filter(Q(username=email_or_username) | Q(email__iexact=email_or_username)).first()
-        if not user:
-            raise ValidationError(_('You entered an invalid email address or username.'))
+    def clean_password2(self):
+        # 두 비밀번호 입력 일치 확인
+        password1 = self.cleaned_data.get("password1")
+        password2 = self.cleaned_data.get("password2")
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError("Passwords don't match")
+        return password2
 
-        if not user.is_active:
-            raise ValidationError(_('This account is not active.'))
-
-        self.user_cache = user
-
-        return email_or_username
-
+    def save(self, commit=True):
+        # Save the provided password in hashed format
+        user = super(UserCreationForm, self).save(commit=False)
+        user.email = UserManager.normalize_email(self.cleaned_data['email'])
+        user.set_password(self.cleaned_data["password1"])
+        if commit:
+            user.save()
+        return user
 
 class SignUpForm(UserCreationForm):
     class Meta:
         model = User
-        fields = settings.SIGN_UP_FIELDS
-
-    email = forms.EmailField(label=_('Email'), help_text=_('Required. Enter an existing email address.'))
+        fields = ['username', 'email', 'password1', 'password2']
 
     def clean_email(self):
         email = self.cleaned_data['email']
@@ -122,32 +159,6 @@ class SignUpForm(UserCreationForm):
             raise ValidationError(_('You can not use this email address.'))
 
         return email
-
-
-class ResendActivationCodeForm(UserCacheMixin, forms.Form):
-    email_or_username = forms.CharField(label=_('Email or Username'))
-
-    def clean_email_or_username(self):
-        email_or_username = self.cleaned_data['email_or_username']
-
-        user = User.objects.filter(Q(username=email_or_username) | Q(email__iexact=email_or_username)).first()
-        if not user:
-            raise ValidationError(_('You entered an invalid email address or username.'))
-
-        if user.is_active:
-            raise ValidationError(_('This account has already been activated.'))
-
-        activation = user.activation_set.first()
-        if not activation:
-            raise ValidationError(_('Activation code not found.'))
-
-        now_with_shift = timezone.now() - timedelta(hours=24)
-        if activation.created_at > now_with_shift:
-            raise ValidationError(_('Activation code has already been sent. You can request a new code in 24 hours.'))
-
-        self.user_cache = user
-
-        return email_or_username
 
 
 class ResendActivationCodeViaEmailForm(UserCacheMixin, forms.Form):
@@ -192,25 +203,6 @@ class RestorePasswordForm(UserCacheMixin, forms.Form):
         self.user_cache = user
 
         return email
-
-
-class RestorePasswordViaEmailOrUsernameForm(UserCacheMixin, forms.Form):
-    email_or_username = forms.CharField(label=_('Email or Username'))
-
-    def clean_email_or_username(self):
-        email_or_username = self.cleaned_data['email_or_username']
-
-        user = User.objects.filter(Q(username=email_or_username) | Q(email__iexact=email_or_username)).first()
-        if not user:
-            raise ValidationError(_('You entered an invalid email address or username.'))
-
-        if not user.is_active:
-            raise ValidationError(_('This account is not active.'))
-
-        self.user_cache = user
-
-        return email_or_username
-
 
 class ChangeProfileForm(forms.Form):
     first_name = forms.CharField(label=_('First name'), max_length=30, required=False)

@@ -23,9 +23,9 @@ from .utils import (
     send_activation_email, send_reset_password_email, send_forgotten_username_email, send_activation_change_email,
 )
 from .forms import (
-    SignInViaUsernameForm, SignInViaEmailForm, SignInViaEmailOrUsernameForm, SignUpForm,
-    RestorePasswordForm, RestorePasswordViaEmailOrUsernameForm, RemindUsernameForm,
-    ResendActivationCodeForm, ResendActivationCodeViaEmailForm, ChangeProfileForm, ChangeEmailForm,
+    SignInViaEmailForm, SignUpForm,
+    RestorePasswordForm, RemindUsernameForm,
+    ResendActivationCodeViaEmailForm, ChangeProfileForm, ChangeEmailForm,
 )
 from .models import Activation
 
@@ -44,13 +44,7 @@ class LogInView(GuestOnlyView, FormView):
 
     @staticmethod
     def get_form_class(**kwargs):
-        if settings.DISABLE_USERNAME or settings.LOGIN_VIA_EMAIL:
-            return SignInViaEmailForm
-
-        if settings.LOGIN_VIA_EMAIL_OR_USERNAME:
-            return SignInViaEmailOrUsernameForm
-
-        return SignInViaUsernameForm
+        return SignInViaEmailForm
 
     @method_decorator(sensitive_post_parameters('password'))
     @method_decorator(csrf_protect)
@@ -93,22 +87,13 @@ class SignUpView(GuestOnlyView, FormView):
         request = self.request
         user = form.save(commit=False)
 
-        if settings.DISABLE_USERNAME:
-            # Set a temporary username
-            user.username = get_random_string()
-        else:
-            user.username = form.cleaned_data['username']
+        user.username = form.cleaned_data['username']
 
         if settings.ENABLE_USER_ACTIVATION:
             user.is_active = False
 
         # Create a user record
         user.save()
-
-        # Change the username to the "user_ID" form
-        if settings.DISABLE_USERNAME:
-            user.username = f'user_{user.id}'
-            user.save()
 
         if settings.ENABLE_USER_ACTIVATION:
             code = get_random_string(20)
@@ -130,7 +115,7 @@ class SignUpView(GuestOnlyView, FormView):
 
             messages.success(request, _('You are successfully signed up!'))
 
-        return redirect('index')
+        return redirect('accounts:log_in')
 
 
 class ActivateView(View):
@@ -156,10 +141,7 @@ class ResendActivationCodeView(GuestOnlyView, FormView):
 
     @staticmethod
     def get_form_class(**kwargs):
-        if settings.DISABLE_USERNAME:
-            return ResendActivationCodeViaEmailForm
-
-        return ResendActivationCodeForm
+        return ResendActivationCodeViaEmailForm
 
     def form_valid(self, form):
         user = form.user_cache
@@ -186,9 +168,6 @@ class RestorePasswordView(GuestOnlyView, FormView):
 
     @staticmethod
     def get_form_class(**kwargs):
-        if settings.RESTORE_PASSWORD_VIA_EMAIL_OR_USERNAME:
-            return RestorePasswordViaEmailOrUsernameForm
-
         return RestorePasswordForm
 
     def form_valid(self, form):
@@ -208,14 +187,12 @@ class ChangeProfileView(LoginRequiredMixin, FormView):
     def get_initial(self):
         user = self.request.user
         initial = super().get_initial()
-        initial['first_name'] = user.first_name
-        initial['last_name'] = user.last_name
+        initial['username'] = user.username
         return initial
 
     def form_valid(self, form):
         user = self.request.user
-        user.first_name = form.cleaned_data['first_name']
-        user.last_name = form.cleaned_data['last_name']
+        initial['username'] = user.username
         user.save()
 
         messages.success(self.request, _('Profile data has been successfully updated.'))

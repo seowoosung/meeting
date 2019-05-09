@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-17 22:18+0900\n"
+"POT-Creation-Date: 2019-05-09 01:39+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,46 +18,337 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: content/templates/layouts/default/page.html:30
-msgid "Home"
-msgstr "홈"
+#: accounts/forms.py:23 accounts/forms.py:112
+msgid "Password(More than 6 characters)"
+msgstr "비밀번호(6자이상)"
 
-#: content/templates/layouts/default/page.html:40
-msgid "Change password"
+#: accounts/forms.py:33
+msgid "Remember me"
 msgstr ""
 
-#: content/templates/layouts/default/page.html:43
-msgid "Change profile"
+#: accounts/forms.py:42
+msgid "You entered an invalid password."
 msgstr ""
 
-#: content/templates/layouts/default/page.html:46
-msgid "Change email"
+#: accounts/forms.py:55 accounts/forms.py:91
+msgid "Email address(example@gmail.com)"
 msgstr ""
 
-#: content/templates/layouts/default/page.html:49
-msgid "Log out"
+#: accounts/forms.py:72 accounts/forms.py:172 accounts/forms.py:198
+#: accounts/forms.py:240
+msgid "You entered an invalid email address."
 msgstr ""
 
-#: content/templates/layouts/default/page.html:53
+#: accounts/forms.py:75 accounts/forms.py:201 accounts/forms.py:243
+msgid "This account is not active."
+msgstr ""
+
+#: accounts/forms.py:102
+msgid "Username(FirstName LastName)"
+msgstr ""
+
+#: accounts/forms.py:122
+msgid "Password confirmation"
+msgstr ""
+
+#: accounts/forms.py:159
+msgid "You can not use this email address."
+msgstr ""
+
+#: accounts/forms.py:165 accounts/forms.py:191 accounts/forms.py:213
+#: accounts/forms.py:233
+msgid "Email"
+msgstr ""
+
+#: accounts/forms.py:175
+msgid "This account has already been activated."
+msgstr ""
+
+#: accounts/forms.py:179
+msgid "Activation code not found."
+msgstr ""
+
+#: accounts/forms.py:183
+msgid ""
+"Activation code has already been sent. You can request a new code in 24 "
+"hours."
+msgstr ""
+
+#: accounts/forms.py:208
+msgid "First name"
+msgstr ""
+
+#: accounts/forms.py:209
+msgid "Last name"
+msgstr ""
+
+#: accounts/forms.py:223
+msgid "Please enter another email."
+msgstr ""
+
+#: accounts/forms.py:227
+msgid "You can not use this mail."
+msgstr ""
+
+#: accounts/models.py:14
+msgid "Users must have an email address"
+msgstr ""
+
+#: accounts/models.py:43
+msgid "Email address"
+msgstr ""
+
+#: accounts/models.py:48
+msgid "Username"
+msgstr ""
+
+#: accounts/models.py:53
+msgid "Is active"
+msgstr ""
+
+#: accounts/models.py:57
+msgid "Date joined"
+msgstr ""
+
+#: accounts/models.py:67
+msgid "user"
+msgstr ""
+
+#: accounts/models.py:68
+msgid "users"
+msgstr ""
+
+#: accounts/models.py:86
+msgid "Full name"
+msgstr ""
+
+#: accounts/templates/accounts/emails/activate_profile.html:15
+#: accounts/templates/accounts/emails/activate_profile.txt:3
+msgid "To activate your profile, please follow this link:"
+msgstr ""
+
+#: accounts/templates/accounts/emails/change_email.html:15
+#: accounts/templates/accounts/emails/change_email.txt:3
+msgid "To change your current email address, please follow the link:"
+msgstr ""
+
+#: accounts/templates/accounts/emails/forgotten_username.html:15
+#: accounts/templates/accounts/emails/forgotten_username.txt:3
+msgid "Your username is:"
+msgstr ""
+
+#: accounts/templates/accounts/emails/restore_password_email.html:15
+#: accounts/templates/accounts/emails/restore_password_email.txt:3
+msgid ""
+"You received this email because you requested a password reset for your user "
+"account."
+msgstr ""
+
+#: accounts/templates/accounts/emails/restore_password_email.html:19
+#: accounts/templates/accounts/emails/restore_password_email.txt:5
+msgid "Please, go to the following page and choose a new password:"
+msgstr ""
+
+#: accounts/templates/accounts/log_in.html:8
+#: accounts/templates/accounts/log_in.html:15
+#: accounts/templates/accounts/remind_username.html:23
+#: accounts/templates/accounts/resend_activation_code.html:23
+#: accounts/templates/accounts/restore_password.html:23
+#: content/templates/layouts/default/pagebase.html:64
 msgid "Log in"
 msgstr "로그인"
 
-#: content/templates/layouts/default/page.html:56
-msgid "Create an account"
-msgstr "계정 만들기"
+#: accounts/templates/accounts/log_in.html:23
+msgid "Forgot your password?"
+msgstr "비밀번호를 잊어버렸나요?"
 
-#: content/templates/main/index.html:8
+#: accounts/templates/accounts/log_in.html:26
+msgid "Forgot your username?"
+msgstr "아이디를 잊어버렸나요?"
+
+#: accounts/templates/accounts/log_in.html:29
+#: accounts/templates/accounts/resend_activation_code.html:8
+msgid "Resend an activation code"
+msgstr ""
+
+#: accounts/templates/accounts/log_out.html:7
+msgid "Logged out"
+msgstr "로그아웃 됐습니다"
+
+#: accounts/templates/accounts/log_out.html:10
+msgid "Thanks for spending some quality time with the site today."
+msgstr ""
+
+#: accounts/templates/accounts/log_out.html:14
+#, fuzzy
+#| msgid "Log in"
+msgid "Log in again"
+msgstr "다시 로그인"
+
+#: accounts/templates/accounts/profile/change_email.html:8 accounts/utils.py:28
+#: content/templates/layouts/default/pagebase.html:54
+msgid "Change email"
+msgstr ""
+
+#: accounts/templates/accounts/profile/change_email.html:15
+#: accounts/templates/accounts/profile/change_password.html:15
+#: accounts/templates/accounts/profile/change_profile.html:15
+#: accounts/templates/accounts/restore_password_confirm.html:21
+msgid "Change"
+msgstr ""
+
+#: accounts/templates/accounts/profile/change_password.html:8
+#: content/templates/layouts/default/pagebase.html:48
+msgid "Change password"
+msgstr ""
+
+#: accounts/templates/accounts/profile/change_profile.html:8
+#: content/templates/layouts/default/pagebase.html:51
+msgid "Change profile"
+msgstr ""
+
+#: accounts/templates/accounts/remind_username.html:8
+msgid "Remind a username"
+msgstr ""
+
+#: accounts/templates/accounts/remind_username.html:15
+#: accounts/templates/accounts/resend_activation_code.html:15
+#: accounts/templates/accounts/restore_password.html:15
+msgid "Next"
+msgstr ""
+
+#: accounts/templates/accounts/restore_password.html:8
+#: accounts/templates/accounts/restore_password_confirm.html:8
+#: accounts/templates/accounts/restore_password_done.html:7
+#: accounts/utils.py:37
+msgid "Restore password"
+msgstr ""
+
+#: accounts/templates/accounts/restore_password_confirm.html:13
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: accounts/templates/accounts/restore_password_confirm.html:28
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+
+#: accounts/templates/accounts/restore_password_done.html:10
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered."
+msgstr ""
+
+#: accounts/templates/accounts/restore_password_done.html:11
+msgid "You should receive them shortly."
+msgstr ""
+
+#: accounts/templates/accounts/restore_password_done.html:15
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you signed up with, and check your spam folder."
+msgstr ""
+
+#: accounts/templates/accounts/sign_up.html:8
+#: content/templates/main/index.html:26
+msgid "Create an account"
+msgstr "회원 가입"
+
+#: accounts/templates/accounts/sign_up.html:15
+msgid "Create"
+msgstr ""
+
+#: accounts/utils.py:19
+msgid "Profile activation"
+msgstr ""
+
+#: accounts/utils.py:47
+msgid "Your username"
+msgstr ""
+
+#: accounts/views.py:109
+msgid ""
+"You are signed up. To activate the account, follow the link sent to the mail."
+msgstr ""
+
+#: accounts/views.py:116
+msgid "You are successfully signed up!"
+msgstr ""
+
+#: accounts/views.py:134
+msgid "You have successfully activated your account!"
+msgstr ""
+
+#: accounts/views.py:161
+msgid "A new activation code has been sent to your email address."
+msgstr ""
+
+#: accounts/views.py:200
+msgid "Profile data has been successfully updated."
+msgstr ""
+
+#: accounts/views.py:234
+msgid "To complete the change of email address, click on the link sent to it."
+msgstr ""
+
+#: accounts/views.py:239
+msgid "Email successfully changed."
+msgstr ""
+
+#: accounts/views.py:257
+msgid "You have successfully changed your email!"
+msgstr ""
+
+#: accounts/views.py:270
+msgid "Your username has been successfully sent to your email."
+msgstr ""
+
+#: accounts/views.py:285
+msgid "Your password was changed."
+msgstr ""
+
+#: accounts/views.py:297
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr ""
+
+#: content/templates/layouts/default/pagebase.html:14
+msgid "blind meeting"
+msgstr ""
+
+#: content/templates/layouts/default/pagebase.html:17
+msgid "TingTang | Meeting"
+msgstr ""
+
+#: content/templates/layouts/default/pagebase.html:57
+msgid "Log out"
+msgstr ""
+
+#: content/templates/main/index.html:9
 msgid "Your username is"
 msgstr ""
 
-#: content/templates/main/index.html:12
-msgid "You are a guest."
-msgstr ""
+#: content/templates/main/index.html:18
+msgid "Meeting. Matching"
+msgstr "미팅. 매칭"
 
-#: meeting/settings.py:110
+#: content/templates/main/index.html:22
+msgid ""
+"When you want to make new friends,<br /> When you want to play with new "
+"people, <br />Join now"
+msgstr ""
+"새로운 친구를 사귀고 싶을때,<br /> 새로운 사람들과 만나고 싶을때,<br /> 미팅"
+"이 하고 싶다면<br /> 팅탱에 가입하세요!!"
+
+#: meeting/settings.py:140
 msgid "Korean"
 msgstr ""
 
-#: meeting/settings.py:111
+#: meeting/settings.py:141
 msgid "English"
 msgstr ""
+
+#~ msgid "Home"
+#~ msgstr "홈"

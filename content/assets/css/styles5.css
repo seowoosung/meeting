@@ -1,0 +1,93 @@
+@media screen and (min-width: 601px) {
+    .intro-page {
+        font-size: 80px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .intro-page {
+        font-size: 30px;
+    }
+}
+
+@media screen and (min-width: 601px) {
+    .navbar-brand {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .navbar-brand {
+        font-size: 20px;
+    }
+}
+
+.intro-img {
+    opacity: 0.7;
+}
+
+.button {
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    margin: 4px 2px;
+}
+
+.button1 {
+    width: 200px;
+    height: 60px;
+    background-color: hotpink;
+    color:white;
+    opacity: 0.9;
+    font-size: 20px;
+    border-radius: 50px;
+}
+
+.button1:hover {
+    opacity: 1;
+}
+
+.button2 {
+    background-color: white;
+    color:hotpink;
+    border-radius: 10px;
+}
+
+.button2:hover {
+    background-color: hotpink;
+    color: white;
+}
+
+.custom-container {
+    text-align: center;
+    color: white;
+}
+
+.custom-container h4{
+    color: white;
+    font-weight: bold;
+}
+
+.custom-container ul{
+    text-align: left;
+    color: gray;
+}
+
+.custom-container ul li a{
+    color: gray;
+}
+
+@media screen and (min-width: 601px) {
+    .custom-container {
+        width: 400px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .custom-container {
+        width: 100%;
+    }
+}

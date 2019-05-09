@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-17 22:18+0900\n"
+"POT-Creation-Date: 2019-05-08 20:27+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,46 +18,301 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: content/templates/layouts/default/page.html:30
-msgid "Home"
+#: accounts/forms.py:18
+msgid "Password"
 msgstr ""
 
-#: content/templates/layouts/default/page.html:40
-msgid "Change password"
+#: accounts/forms.py:24
+msgid "Remember me"
 msgstr ""
 
-#: content/templates/layouts/default/page.html:43
-msgid "Change profile"
+#: accounts/forms.py:33
+msgid "You entered an invalid password."
 msgstr ""
 
-#: content/templates/layouts/default/page.html:46
-msgid "Change email"
+#: accounts/forms.py:39
+msgid "Username"
 msgstr ""
 
-#: content/templates/layouts/default/page.html:49
-msgid "Log out"
+#: accounts/forms.py:52
+msgid "You entered an invalid username."
 msgstr ""
 
-#: content/templates/layouts/default/page.html:53
+#: accounts/forms.py:55 accounts/forms.py:79 accounts/forms.py:103
+#: accounts/forms.py:190 accounts/forms.py:208 accounts/forms.py:251
+msgid "This account is not active."
+msgstr ""
+
+#: accounts/forms.py:63 accounts/forms.py:115 accounts/forms.py:154
+#: accounts/forms.py:180 accounts/forms.py:221 accounts/forms.py:241
+msgid "Email"
+msgstr ""
+
+#: accounts/forms.py:76 accounts/forms.py:161 accounts/forms.py:187
+#: accounts/forms.py:248
+msgid "You entered an invalid email address."
+msgstr ""
+
+#: accounts/forms.py:87 accounts/forms.py:128 accounts/forms.py:198
+msgid "Email or Username"
+msgstr ""
+
+#: accounts/forms.py:100 accounts/forms.py:135 accounts/forms.py:205
+msgid "You entered an invalid email address or username."
+msgstr ""
+
+#: accounts/forms.py:115
+msgid "Required. Enter an existing email address."
+msgstr ""
+
+#: accounts/forms.py:122
+msgid "You can not use this email address."
+msgstr ""
+
+#: accounts/forms.py:138 accounts/forms.py:164
+msgid "This account has already been activated."
+msgstr ""
+
+#: accounts/forms.py:142 accounts/forms.py:168
+msgid "Activation code not found."
+msgstr ""
+
+#: accounts/forms.py:146 accounts/forms.py:172
+msgid ""
+"Activation code has already been sent. You can request a new code in 24 "
+"hours."
+msgstr ""
+
+#: accounts/forms.py:216
+msgid "First name"
+msgstr ""
+
+#: accounts/forms.py:217
+msgid "Last name"
+msgstr ""
+
+#: accounts/forms.py:231
+msgid "Please enter another email."
+msgstr ""
+
+#: accounts/forms.py:235
+msgid "You can not use this mail."
+msgstr ""
+
+#: accounts/templates/accounts/emails/activate_profile.html:15
+#: accounts/templates/accounts/emails/activate_profile.txt:3
+msgid "To activate your profile, please follow this link:"
+msgstr ""
+
+#: accounts/templates/accounts/emails/change_email.html:15
+#: accounts/templates/accounts/emails/change_email.txt:3
+msgid "To change your current email address, please follow the link:"
+msgstr ""
+
+#: accounts/templates/accounts/emails/forgotten_username.html:15
+#: accounts/templates/accounts/emails/forgotten_username.txt:3
+msgid "Your username is:"
+msgstr ""
+
+#: accounts/templates/accounts/emails/restore_password_email.html:15
+#: accounts/templates/accounts/emails/restore_password_email.txt:3
+msgid ""
+"You received this email because you requested a password reset for your user "
+"account."
+msgstr ""
+
+#: accounts/templates/accounts/emails/restore_password_email.html:19
+#: accounts/templates/accounts/emails/restore_password_email.txt:5
+msgid "Please, go to the following page and choose a new password:"
+msgstr ""
+
+#: accounts/templates/accounts/log_in.html:8
+#: accounts/templates/accounts/log_in.html:15
+#: accounts/templates/accounts/remind_username.html:23
+#: accounts/templates/accounts/resend_activation_code.html:23
+#: accounts/templates/accounts/restore_password.html:23
+#: content/templates/layouts/default/page.html:65
 msgid "Log in"
 msgstr ""
 
-#: content/templates/layouts/default/page.html:56
+#: accounts/templates/accounts/log_in.html:23
+msgid "Forgot your password?"
+msgstr ""
+
+#: accounts/templates/accounts/log_in.html:26
+msgid "Forgot your username?"
+msgstr ""
+
+#: accounts/templates/accounts/log_in.html:29
+#: accounts/templates/accounts/resend_activation_code.html:8
+msgid "Resend an activation code"
+msgstr ""
+
+#: accounts/templates/accounts/log_out.html:7
+msgid "Logged out"
+msgstr ""
+
+#: accounts/templates/accounts/log_out.html:10
+msgid "Thanks for spending some quality time with the site today."
+msgstr ""
+
+#: accounts/templates/accounts/log_out.html:14
+msgid "Log in again"
+msgstr ""
+
+#: accounts/templates/accounts/profile/change_email.html:8 accounts/utils.py:28
+#: content/templates/layouts/default/page.html:54
+msgid "Change email"
+msgstr ""
+
+#: accounts/templates/accounts/profile/change_email.html:15
+#: accounts/templates/accounts/profile/change_password.html:15
+#: accounts/templates/accounts/profile/change_profile.html:15
+#: accounts/templates/accounts/restore_password_confirm.html:21
+msgid "Change"
+msgstr ""
+
+#: accounts/templates/accounts/profile/change_password.html:8
+#: content/templates/layouts/default/page.html:48
+msgid "Change password"
+msgstr ""
+
+#: accounts/templates/accounts/profile/change_profile.html:8
+#: content/templates/layouts/default/page.html:51
+msgid "Change profile"
+msgstr ""
+
+#: accounts/templates/accounts/remind_username.html:8
+msgid "Remind a username"
+msgstr ""
+
+#: accounts/templates/accounts/remind_username.html:15
+#: accounts/templates/accounts/resend_activation_code.html:15
+#: accounts/templates/accounts/restore_password.html:15
+msgid "Next"
+msgstr ""
+
+#: accounts/templates/accounts/restore_password.html:8
+#: accounts/templates/accounts/restore_password_confirm.html:8
+#: accounts/templates/accounts/restore_password_done.html:7
+#: accounts/utils.py:37
+msgid "Restore password"
+msgstr ""
+
+#: accounts/templates/accounts/restore_password_confirm.html:13
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: accounts/templates/accounts/restore_password_confirm.html:28
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+
+#: accounts/templates/accounts/restore_password_done.html:10
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered."
+msgstr ""
+
+#: accounts/templates/accounts/restore_password_done.html:11
+msgid "You should receive them shortly."
+msgstr ""
+
+#: accounts/templates/accounts/restore_password_done.html:15
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you signed up with, and check your spam folder."
+msgstr ""
+
+#: accounts/templates/accounts/sign_up.html:8
+#: content/templates/main/index.html:25
 msgid "Create an account"
 msgstr ""
 
-#: content/templates/main/index.html:8
+#: accounts/templates/accounts/sign_up.html:15
+msgid "Create"
+msgstr ""
+
+#: accounts/utils.py:19
+msgid "Profile activation"
+msgstr ""
+
+#: accounts/utils.py:47
+msgid "Your username"
+msgstr ""
+
+#: accounts/views.py:124
+msgid ""
+"You are signed up. To activate the account, follow the link sent to the mail."
+msgstr ""
+
+#: accounts/views.py:131
+msgid "You are successfully signed up!"
+msgstr ""
+
+#: accounts/views.py:149
+msgid "You have successfully activated your account!"
+msgstr ""
+
+#: accounts/views.py:179
+msgid "A new activation code has been sent to your email address."
+msgstr ""
+
+#: accounts/views.py:221
+msgid "Profile data has been successfully updated."
+msgstr ""
+
+#: accounts/views.py:255
+msgid "To complete the change of email address, click on the link sent to it."
+msgstr ""
+
+#: accounts/views.py:260
+msgid "Email successfully changed."
+msgstr ""
+
+#: accounts/views.py:278
+msgid "You have successfully changed your email!"
+msgstr ""
+
+#: accounts/views.py:291
+msgid "Your username has been successfully sent to your email."
+msgstr ""
+
+#: accounts/views.py:306
+msgid "Your password was changed."
+msgstr ""
+
+#: accounts/views.py:318
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr ""
+
+#: content/templates/layouts/default/page.html:14
+msgid "blind meeting"
+msgstr ""
+
+#: content/templates/layouts/default/page.html:17
+msgid "TingTang | Meeting"
+msgstr ""
+
+#: content/templates/layouts/default/page.html:57
+msgid "Log out"
+msgstr ""
+
+#: content/templates/main/index.html:9
 msgid "Your username is"
 msgstr ""
 
-#: content/templates/main/index.html:12
-msgid "You are a guest."
+#: content/templates/main/index.html:17
+msgid "Meet new people, Make friends"
 msgstr ""
 
-#: meeting/settings.py:110
+#: meeting/settings.py:148
 msgid "Korean"
 msgstr ""
 
-#: meeting/settings.py:111
+#: meeting/settings.py:149
 msgid "English"
 msgstr ""
