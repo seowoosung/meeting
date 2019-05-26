@@ -16,3 +16,10 @@ if settings.DEBUG:
     urlpatterns += [
         url(r'^__debug__/', include(debug_toolbar.urls)),
     ] 
+
+# media 파일들 관리
+from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
+from django.conf import settings
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

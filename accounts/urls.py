@@ -1,14 +1,15 @@
 from django.urls import path
-
 from .views import (
     LogInView, ResendActivationCodeView, RemindUsernameView, SignUpView, ActivateView, LogOutView,
     ChangeEmailView, ChangeEmailActivateView, ChangeProfileView, ChangePasswordView,
     RestorePasswordView, RestorePasswordDoneView, RestorePasswordConfirmView,
 )
+from main.views import IndexPageView
 
 app_name = 'accounts'
 
 urlpatterns = [
+    path('', IndexPageView.as_view()),
     path('log-in/', LogInView.as_view(), name='log_in'),
     path('log-out/', LogOutView.as_view(), name='log_out'),
 

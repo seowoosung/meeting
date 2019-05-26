@@ -5,10 +5,6 @@
 
 {% block content %}
 
-{% if request.user.is_authenticated %}
-{% trans 'Your username is' %} <b>{{ request.user.username }}</b>.
-{% else %}
-
 <div class="container">
     <!--Grid row-->
     <div class="row">
@@ -36,6 +32,5 @@
     </div>
     <!--Grid row end-->
 </div>
-{% endif %}
 
 {% endblock %}

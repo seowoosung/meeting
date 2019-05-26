@@ -1,3 +1,11 @@
+:root {
+    --main-button-color: hotpink;
+}
+
+a, u {
+    text-decoration: none !important; /* href link에 underline 제거 */
+}
+
 @media screen and (min-width: 601px) {
     .intro-page {
         font-size: 80px;
@@ -33,12 +41,13 @@
     border: none;
     padding: 10px 20px;
     margin: 4px 2px;
+    line-height: 100%; 
 }
 
 .button1 {
     width: 200px;
     height: 60px;
-    background-color: hotpink;
+    background-color: var(--main-button-color);
     color:white;
     opacity: 0.9;
     font-size: 20px;
@@ -51,12 +60,12 @@
 
 .button2 {
     background-color: white;
-    color:hotpink;
+    color: var(--main-button-color);
     border-radius: 10px;
 }
 
 .button2:hover {
-    background-color: hotpink;
+    background-color: var(--main-button-color);
     color: white;
 }
 
@@ -91,3 +100,4 @@
         width: 100%;
     }
 }
+

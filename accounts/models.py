@@ -4,6 +4,11 @@ from django.contrib.auth.models import (
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
+
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, username, password=None):
@@ -39,6 +44,10 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    photo = models.ImageField(
+        default='https://static.techspot.com/images2/news/bigimage/2018/09/2018-09-04-image-6.png',
+    )
+
     email = models.EmailField(
         verbose_name=_('Email address'),
         max_length=255,

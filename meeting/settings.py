@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     
     # Vendor apps
     'bootstrap4',
+    'imagekit',
     # Application apps
     'app.apps.AppConfig',
     'main.apps.MainConfig',
@@ -138,7 +139,6 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 LANGUAGE_CODE = 'ko-KR'
 LANGUAGES = [
     ('ko', _('Korean')),
-    ('en', _('English'))
 ]
 
 TIME_ZONE = 'Asia/Seoul'
@@ -153,12 +153,17 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
-LOCALE_PATHS = [
-    os.path.join(CONTENT_DIR, 'locale')
-]
-
 STATICFILES_DIRS = [
     os.path.join(CONTENT_DIR, 'assets'),
 ]
 
+LOCALE_PATHS = [
+    os.path.join(CONTENT_DIR, 'locale')
+]
+
 AUTH_USER_MODEL = 'accounts.User'
+
+
+# media file을 위한 셋팅
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(CONTENT_DIR, 'media')
