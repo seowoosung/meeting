@@ -1,6 +1,5 @@
 accounts/__pycache__
-accounts/migrations/__pycache__
-app/migrations/__pycache__
+accounts/migrations
 main/__pycache__
 meeting/__pycache__
 *.pyc
