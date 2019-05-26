@@ -6,7 +6,6 @@
 {% block javascript %}
 <script>
     // Start upload preview image
-    $(".gambar").attr("src", "https://user.gadjian.com/static/images/personnel_boy.png");
     var $uploadCrop,
         tempFilename,
         rawImg,
@@ -90,7 +89,7 @@
 <form method="post" enctype="multipart/form-data" action="{% url 'app:edit' %}">
 <!-- image 보이기 -->
     <img src="{{ request.user.photo.url }}" alt="profile picture" class="gambar img-responsive img-thumbnail" style="width:100%; height:70%" id="item-img-output" />
-    <input type="file" class="item-img file center-block" name="file_photo" id="photo"/>
+    <input type="file" class="item-img file center-block" name="photo" id="photo"/>
 <!-- profile 설명 -->
 <div class="container">
     <p> {{ request.user.username }}</p>

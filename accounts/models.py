@@ -45,7 +45,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     photo = models.ImageField(
-        default='https://static.techspot.com/images2/news/bigimage/2018/09/2018-09-04-image-6.png',
+        default='https://user.gadjian.com/static/images/personnel_boy.png',
     )
 
     email = models.EmailField(
