@@ -6,10 +6,6 @@ from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
-from imagekit.models import ProcessedImageField
-from imagekit.processors import ResizeToFill
-
-
 class UserManager(BaseUserManager):
     def create_user(self, email, username, password=None):
         """

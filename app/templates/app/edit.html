@@ -93,7 +93,9 @@
 <!-- profile 설명 -->
 <div class="container">
     <p> {{ request.user.username }}</p>
+    <input type="text" name="username"/>
     <p> {{ request.user.email }}</p>
+    <input type="text" name="email"/>
 </div>
 {% csrf_token %}
 <button type="submit">Upload</button>
