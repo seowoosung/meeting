@@ -41,7 +41,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     photo = models.ImageField(
-        default='https://user.gadjian.com/static/images/personnel_boy.png',
+        default='personnel_boy.png',
     )
 
     email = models.EmailField(
@@ -52,7 +52,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(
         verbose_name=_('Username'),
         max_length=30,
-        unique=True
     )
     is_active = models.BooleanField(
         verbose_name=_('Is active'),

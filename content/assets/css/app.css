@@ -1,3 +1,7 @@
+:root {
+    --main-button-color: hotpink;
+}
+
 /* for app */
 .appcontainer-info {
     border-width: 0.05px;
@@ -10,7 +14,7 @@
 }
 
 .appcontainer-info h1{
-    background-color: hotpink;
+    background-color: var(--main-button-color);
     color: white;
     text-align: center;
     padding : 10px;
@@ -71,12 +75,13 @@
    border: 1px solid black;
 }
 
+
 .info-category p {
     margin-top: 15px;
     margin-left: 15px;
     margin-bottom: 5px;
     font-size: 20px;
-    color: hotpink;
+    color: var(--main-button-color);
     font-weight: bold;
 }
 
@@ -100,7 +105,7 @@
 }
 
 .info-category .info-button:hover:after {
-    color: hotpink;
+    color: var(--main-button-color)
 }
 
 .info-category .info-button:not(:last-child) {
@@ -127,4 +132,9 @@ label.cabinet input.file{
  width: 400px;
  height: 400px;
  padding-bottom:25px;
+}
+
+.img-profile {
+    width: 100%;
+    height:auto;
 }

@@ -4,4 +4,4 @@ main/__pycache__
 meeting/__pycache__
 *.pyc
 content/media
-
+.vscode/

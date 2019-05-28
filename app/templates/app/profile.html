@@ -8,7 +8,7 @@
 
 {% block main %}
 <!-- image 보이기 -->
-<img src="{{ request.user.photo.url }}" alt="profile picture" class="img-responsive img-thumbnail" style="width:100%; height:70%" />
+<img src="{{ request.user.photo.url }}" alt="profile picture" class="img-responsive img-profile"/>
 <!-- profile 설명 -->
 <div class="container">
     <p> {{ request.user.username }}</p>
