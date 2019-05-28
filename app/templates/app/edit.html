@@ -6,7 +6,7 @@
 {% block javascript %}
 <script>
     // default value setting
-    $('#input-username').attr('value', "{{ request.user.username }}");
+    $('#id_username').val("{{ request.user.username }}");
     // Start upload preview image
     var $uploadCrop,
         tempFilename,
@@ -58,7 +58,11 @@
             size: { width: 280, height: 400 }
         }).then(function (resp) {
             $('#item-img-output').attr('src', resp);
+            var img2 = document.createElement('img');
+            img2.src = 'image2.jpg';
+            img2.alt = 'alt text';
             $('#cropImagePop').modal('hide');
+            $('#id_photo').val(img2);
         });
     });
 				// End upload preview image

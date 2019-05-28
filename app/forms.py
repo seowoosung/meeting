@@ -11,10 +11,6 @@ class PhotoUploadForm(ModelForm):
         widgets = {
             'photo': forms.FileInput(attrs={
                 'class': 'item-img file center-block',
-                'id' : 'input-photo',
-                }),
-            'username': forms.TextInput(attrs={
-                'id': 'input-username',
                 }),
         }
 
