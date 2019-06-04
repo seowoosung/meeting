@@ -43,7 +43,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     photo = models.ImageField(
         default='personnel_boy.png',
     )
-
     email = models.EmailField(
         verbose_name=_('Email address'),
         max_length=255,
@@ -52,6 +51,19 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(
         verbose_name=_('Username'),
         max_length=30,
+    )
+    introduction = models.CharField(
+        verbose_name=_('Introduction'),
+        max_length=200,
+        null=True,
+    )
+    age = models.IntegerField(
+        verbose_name=_('Age'),
+        null=True,
+    )
+    is_male = models.BooleanField(
+        verbose_name=_('Gender'),
+        default=True
     )
     is_active = models.BooleanField(
         verbose_name=_('Is active'),
@@ -65,7 +77,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', ]
+    REQUIRED_FIELDS = ['username', 'is_male', 'age']
 
     class Meta:
         verbose_name = _('user')

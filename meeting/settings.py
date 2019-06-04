@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     
     # Vendor apps
     'bootstrap4',
-    'imagekit',
     # Application apps
     'app.apps.AppConfig',
     'main.apps.MainConfig',

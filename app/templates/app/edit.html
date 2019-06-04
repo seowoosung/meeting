@@ -7,6 +7,9 @@
 <script>
     // default value setting
     $('#id_username').val("{{ request.user.username }}");
+    $('#id_age').val("{{ request.user.age }}");
+    $('#id_introduction').val("{{ request.user.introduction }}");
+    $('#id_is_male').val("{{ request.user.is_male }}");
     // Start upload preview image
     var $uploadCrop,
         tempFilename,
@@ -31,7 +34,7 @@
     $uploadCrop = $('#upload-demo').croppie({
         viewport: {
             width: 280,
-            height: 400,
+            height: 350,
         },
         enforceBoundary: false,
         enableExif: true
@@ -52,20 +55,23 @@
         readFile(this);
     });
     $('#cropImageBtn').on('click', function (ev) {
+        var cropData = $uploadCrop.croppie('get');
+        $('#id_top_left_x').val(cropData.points[0]);
+        $('#id_top_left_y').val(cropData.points[1]);
+        $('#id_bottom_right_x').val(cropData.points[2]);
+        $('#id_bottom_right_y').val(cropData.points[3]);
+
         $uploadCrop.croppie('result', {
             type: 'base64',
             format: 'jpeg',
-            size: { width: 280, height: 400 }
+            size: { width: 280, height: 350 }
         }).then(function (resp) {
             $('#item-img-output').attr('src', resp);
-            var img2 = document.createElement('img');
-            img2.src = 'image2.jpg';
-            img2.alt = 'alt text';
             $('#cropImagePop').modal('hide');
-            $('#id_photo').val(img2);
         });
     });
-				// End upload preview image
+
+// End upload preview image
 </script>
 {% endblock %}
 
@@ -93,16 +99,35 @@
 
 {% block main %}
 
-<form method="post" enctype="multipart/form-data" action="{% url 'app:edit' %}">
+<form method="post" enctype="multipart/form-data" action="{% url 'app:edit' %}" id="formUpload">
 {% csrf_token %}
 <!-- image 보이기 -->
-    <img src="{{ request.user.photo.url }}" alt="profile picture" class="gambar img-responsive img-profile" id="item-img-output" />
+<img src="{{ request.user.photo.url }}" alt="profile picture" class="gambar img-responsive img-profile"
+    id="item-img-output" />
 <!-- profile 설명 -->
-{{ form.photo }}
-<div class="container">
-{{ form.username }}
+<div class="filebox">
+    <label for="id_photo">
+        <img src="{% static 'image/plus.png' %}" alt="upload" />
+    </label>
+    {{ form.photo }}
 </div>
-<button type="submit">Upload</button>
+{{ form.top_left_x }}
+{{ form.top_left_y }}
+{{ form.bottom_right_x }}
+{{ form.bottom_right_y }}
+<div class="container">
+<div class="edit-item">{{ form.username.label }}</div>
+<div class="edit-data">{{ form.username }}</div>
+<div class="edit-item">{{ form.age.label }}</div>
+<div class="edit-data">{{ form.age }}</div>
+<div class="edit-item">{{ form.introduction.label }}</div>
+<div class="edit-data">{{ form.introduction }}</div>
+<div class="edit-item">{{ form.is_male.label }}</div>
+<div class="edit-data">{{ form.is_male }}</div>
+</div>
+<div class="text-center">
+<button type="submit" class="btn button button1" id="buttonUpload" style="width: 150px; height: 45px;">Upload</button>
+</div>
 </form>
 <!-- modal for image cropping -->
 <div class="modal fade" id="cropImagePop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

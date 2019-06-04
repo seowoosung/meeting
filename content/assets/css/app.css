@@ -63,10 +63,10 @@
 }
 
 .appcontainer-main .container {
-    padding: 10px 20px;
+    padding: 0px;
 }
 
-
+/* for croppie */
 .appcontainer-main #canvas {
    height: 600px;
    width: 600px;
@@ -74,7 +74,6 @@
    cursor: default;
    border: 1px solid black;
 }
-
 
 .info-category p {
     margin-top: 15px;
@@ -84,7 +83,6 @@
     color: var(--main-button-color);
     font-weight: bold;
 }
-
 .info-category .info-button {
   background-color: white; 
   border: 0.5px solid #d9d9d9; 
@@ -97,44 +95,76 @@
   width: 100%;
   display: block;
 }
+.info-category .info-button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
 
+/* 오른쪽 화살표 */
 .info-category .info-button:after {
   content: ">";
   color: #d9d9d9;
   float: right;
 }
-
 .info-category .info-button:hover:after {
     color: var(--main-button-color)
 }
 
-.info-category .info-button:not(:last-child) {
-  border-bottom: none; /* Prevent double borders */
-}
-
-/* image cropping */
-label.cabinet{
-	display: block;
-	cursor: pointer;
-}
-
-label.cabinet input.file{
- position: relative;
- height: 100%;
- width: auto;
- opacity: 0;
- -moz-opacity: 0;
- filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
- margin-top:-30px;
-}
-
 #upload-demo{
  width: 400px;
- height: 400px;
+ height: 350px;
  padding-bottom:25px;
 }
 
 .img-profile {
     width: 100%;
     height:auto;
+}
+
+#profile-name {
+    font-size: 30px;
+    margin-bottom: 0px;
+    margin-left:10px;
+}
+#profile-age {
+    font-size: 25px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+#profile-intro  {
+    font-size: 20px;
+    margin-left:10px;
+}
+
+.edit-item {
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 5px;
+}
+.edit-data {
+    font-size: 20px;
+    padding-left: 15px;
+}
+
+.form-field {
+    border:none; 
+    width:100%; 
+    color: #a6a6a6;
+}
+
+/* image upload버튼 */
+.filebox {
+   position: absolute;
+   right:0%;
+}
+.filebox img {
+    height: 40px;
+    width: 40px;
+    background-color: var(--main-button-color);
+    margin-top:-40px;
+    cursor: pointer;
+}
+.filebox input[type="file"] { /* file field 숨기기 */
+   position: absolute;
+   clip:rect(0,0,0,0);
+   border:0;
 }

@@ -26,12 +26,11 @@
         <h1>{% trans 'My Profile' %}</h1>
         <div class="info-category">
             <p>account setting</p>
-            <button class="info-button">
-                email
-            </button>
-            <button class="info-button">
-                name
-            </button>
+            <a href="{% url 'accounts:change_email' %}">
+                <button type="button" class="info-button">
+                    email
+                </button>
+            </a>
         </div>
         <div class="info-category">
             <p>etc</p>
