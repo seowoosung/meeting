@@ -19,7 +19,10 @@ class EditForm(ModelForm):
         widgets = {
             'is_male': forms.Select(choices=TRUE_FALSE_CHOICES),
             'photo': forms.FileInput(attrs={
-            'class': 'item-img file center-block',
+                'class': 'item-img file center-block',
+            }),
+            'introduction': forms.Textarea(attrs={
+                'cols': 8, 'rows': 3
             }),
         }
 

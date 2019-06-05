@@ -41,7 +41,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     photo = models.ImageField(
-        default='personnel_boy.png',
+        default='personal_boy.png',
     )
     email = models.EmailField(
         verbose_name=_('Email address'),

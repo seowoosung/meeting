@@ -1,8 +1,9 @@
 from django.views.generic import FormView, TemplateView
 from django.forms import ValidationError
-from .forms import EditForm
 from django.shortcuts import redirect
+from django.conf import settings
 from PIL import Image
+from .forms import EditForm
 import os
 
 class ProfileView(TemplateView):
@@ -16,8 +17,6 @@ class EditView(FormView):
         user = self.request.user
 
         if 'photo' in form.changed_data:
-            if os.path.isfile(user.photo.path):
-                os.remove(user.photo.path)
             user.photo = self.get_cropped_image(form, user)
         
         user.username = form.cleaned_data['username']
@@ -37,8 +36,11 @@ class EditView(FormView):
         x2 = form.cleaned_data.get('bottom_right_x')
         y2 = form.cleaned_data.get('bottom_right_y')
 
+        # unique key인 email이름을 file name으로 setting
+        photo = user.email + '.png'
+        photo_url = settings.MEDIA_ROOT + '/' + photo 
         image = Image.open(form.cleaned_data['photo'])
         cropped_image = image.crop((x1, y1, x2, y2))
-        cropped_image.save(user.photo.path ,'PNG')
+        cropped_image.save(photo_url,'PNG')
 
-        return user.photo
+        return photo
