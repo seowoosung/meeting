@@ -58,6 +58,23 @@
     </div>
 
     <div class="container-fluid appcontainer-main">
+        <div class="row text-center menu-list">
+            <div class="col-4 menu-item">
+                <a href="{% url 'app:profile' %}">
+                    {% trans 'My Profile' %}
+                </a>
+            </div>
+            <div class="col-4 menu-item">
+                <a href="{% url 'app:list' %}">
+                    {% trans 'Today List' %}
+                </a>
+            </div>
+            <div class="col-4 menu-item">
+                <a href="{% url 'app:profile' %}">
+                    {% trans 'My Match' %}
+                </a>
+            </div>
+        </div>
         {% block main %}
         empty main.
         {% endblock %}
