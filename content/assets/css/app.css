@@ -13,13 +13,6 @@
     padding: 0;
 }
 
-.appcontainer-info h1{
-    background-color: var(--main-button-color);
-    color: white;
-    text-align: center;
-    padding : 10px;
-}
-
 .appcontainer-main {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: white;
@@ -28,11 +21,11 @@
     padding : 0;
     border-radius: 10px;
     overflow: auto;
-    -ms-overflow-style: none;  /*scrollbacr 없애기 */
+    -ms-overflow-style: none;  /*scrollbar 없애기 */
 }
 
 ::-webkit-scrollbar {
-    display: none; /* scrollbacr 없애기 */
+    display: none; /* scrollbar 없애기 */
 }
   
 @media screen and (min-width: 801px) {
@@ -64,6 +57,7 @@
 
 .appcontainer-main .container {
     padding: 0px;
+    margin: 0px;
 }
 
 /* for croppie */
@@ -75,6 +69,20 @@
    border: 1px solid black;
 }
 
+.info-title {
+    background-color: var(--main-button-color);
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    height: 60px;
+    font-size:40px;
+    top:50%;
+}
+
+.info-title a {
+    color:white;
+}
+
 .info-category p {
     margin-top: 15px;
     margin-left: 15px;
@@ -83,8 +91,8 @@
     color: var(--main-button-color);
     font-weight: bold;
 }
-.info-category .info-button {
-  background-color: white; 
+.info-button {
+  background-color: white;
   border: 0.5px solid #d9d9d9; 
   outline: 0;
   padding: 10px 15px;
@@ -95,17 +103,17 @@
   width: 100%;
   display: block;
 }
-.info-category .info-button:not(:last-child) {
+.info-button:not(:last-child) {
   border-bottom: none; /* Prevent double borders */
 }
 
 /* 오른쪽 화살표 */
-.info-category .info-button:after {
+.info-button:after {
   content: ">";
   color: #d9d9d9;
   float: right;
 }
-.info-category .info-button:hover:after {
+.info-button:hover:after {
     color: var(--main-button-color)
 }
 
@@ -167,4 +175,8 @@
    position: absolute;
    clip:rect(0,0,0,0);
    border:0;
+}
+
+.media-box {
+  cursor: pointer;
 }

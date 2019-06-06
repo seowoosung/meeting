@@ -1,7 +1,8 @@
-from django.views.generic import FormView, TemplateView
+from django.views.generic import FormView, TemplateView, ListView
 from django.forms import ValidationError
 from django.shortcuts import redirect
 from django.conf import settings
+from accounts.models import User
 from PIL import Image
 from .forms import EditForm
 import os
@@ -44,3 +45,17 @@ class EditView(FormView):
         cropped_image.save(photo_url,'PNG')
 
         return photo
+
+class CandidateListView(ListView):
+    model = User
+    context_object_name = 'candidate_list'
+    template_name = "app/list.html"
+
+    def get_queryset(self):
+        candidate_gender = True
+        
+        if self.request.user.is_male:
+            candidate_gender = False
+
+        return User.objects.filter(is_male=candidate_gender)[:2]
+        

@@ -1,0 +1,35 @@
+{% extends 'app/base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+<!-- javascript -->
+{% block javascript %}
+<script>
+    function goToProfile() {
+        window.alert('hello');
+    }
+</script>
+{% endblock %}
+
+{% block main %}
+{% if candidate_list %}
+{% for person in candidate_list %}
+<div class="media mt-3 mx-1 media-box" onClick="goToProfile()">
+    <img src="{{ person.photo.url }}" class="align-self-start mr-3" style="width:100px">
+    <div class="media-body">
+        <div class="row ml-1">
+            {{ person.username }}
+            {{ person.age }}
+        </div>
+        <hr width=100%>
+        <div style="overflow:hidden;">
+        {{ person.introduction }}
+        </div>
+    </div>
+</div>
+</a>
+{% endfor %}
+{% else %}
+<p> no candidate </p>
+{% endif %}
+{% endblock %}
