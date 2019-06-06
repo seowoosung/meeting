@@ -110,7 +110,7 @@ class SignUpView(GuestOnlyView, FormView):
         else:
             raw_password = form.cleaned_data['password1']
 
-            user = authenticate(username=user.username, password=raw_password)
+            user = authenticate(username=user.email, password=raw_password)
             login(request, user)
 
             messages.success(request, _('You are successfully signed up!'))
