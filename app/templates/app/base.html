@@ -59,10 +59,15 @@
 
     <div class="container-fluid appcontainer-main">
         <div class="row text-center menu-list">
-            <div class="col-4 menu-item">
-                <a href="{% url 'app:profile' %}">
+            <div class="col-4 menu-item dropdown">
+                <a href="{% url 'app:profile' %}" class="dropdown-toggle" data-toggle="dropdown">
                     {% trans 'My Profile' %}
                 </a>
+                <div class="dropdown-menu menu-item">
+                    <a href="{% url 'accounts:log_out' %}" class="dropdown-item">
+                        logout
+                    </a>
+                </div>
             </div>
             <div class="col-4 menu-item">
                 <a href="{% url 'app:list' %}">
